@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Core Wiki</h1>
+
+<hr />
+
+<p>This is home page of Core Wiki</p>
+
+<br />
+
+<table width="400" height="200" border="1" style="text-align:center">
+    <tbody>
+        <tr>
+            <th style="text-align:center">
+                Links to Wiki Pages
+            </th>
+        </tr>
+
+        <tr>
+            <td><a asp-page="/Pragmatism">Pragmatism</a></td>
+        </tr>
+
+        <tr>
+            <td><a asp-page="/WorldPopulation">World Population</a></td>
+        </tr>
+
+        <tr>
+            <td><a asp-page="/StructuredProgramming">Structured Programming</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+<p>You can also navigate from top panel</p>
