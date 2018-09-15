@@ -34,7 +34,7 @@ namespace CoreCrud.Models
         /// </value>
         [Display(Name = "Sold Date")]
         [DataType(DataType.Date)]
-        public DateTime SoldDate { get; set; }
+        public DateTime? SoldDate { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the luch box is microwave safe.
