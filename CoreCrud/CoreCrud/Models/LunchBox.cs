@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CoreCrud.Models
 {
     /// <summary>
-    /// Model for Lunch Box
+    /// Model for Lunch Box as Collectibles
     /// </summary>
     public class LunchBox
     {
