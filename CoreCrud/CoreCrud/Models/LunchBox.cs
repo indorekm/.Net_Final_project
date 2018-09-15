@@ -23,7 +23,7 @@ namespace CoreCrud.Models
         /// <value>
         /// The name of the lunch box.
         /// </value>
-        [Display(Name = "LunchBox Name")]
+        [Display(Name = "Lunch Box Name")]
         public string LunchBoxName { get; set; }
 
         /// <summary>
