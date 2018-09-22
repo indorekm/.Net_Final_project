@@ -1,14 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreCrud.Models
 {
+    /// <summary>
+    /// Seed Data
+    /// </summary>
     public class SeedData
     {
+        /// <summary>
+        /// Initializes the specified service provider.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new CoreCrudContext(
@@ -79,6 +84,16 @@ namespace CoreCrud.Models
                         IsSellingOnline = true,
                         Location = "Coloumbus",
                         SalesRevenue = 1000.00M,                        
+                    },
+
+                    new LunchBoxManufacturer
+                    {
+                        Id = 2,
+                        Name = "Tupperware",
+                        EstablishedOn = DateTime.Parse("2014-11-29"),
+                        IsSellingOnline = false,
+                        Location = "Sidney",
+                        SalesRevenue = 4500.00M,
                     }
                     );
                 context.SaveChanges();

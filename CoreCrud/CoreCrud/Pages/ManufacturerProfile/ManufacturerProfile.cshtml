@@ -1,0 +1,99 @@
+﻿@page
+@model CoreCrud.Pages.ManufacturerProfile.ManufacturerProfileModel
+@{
+    ViewData["Title"] = $"Manufacturer Profile: {Model.LunchBoxManufacturer.Name}";
+}
+
+<h1 class="text-muted" style="padding-top: 20px;">Manufacturer Profile</h1>
+<hr />
+
+<h2>@Model.LunchBoxManufacturer.Name </h2>
+
+<div class="row" style="margin-top: 40px;">
+    <div class="col-md-6">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-map-marker"></i> Location</h3>
+            </div>
+            <div class="panel-body">
+                @Model.LunchBoxManufacturer.Location
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> Details</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Established On</th>
+                            <td>@Model.LunchBoxManufacturer.EstablishedOn.ToString("MMMM dd, yyyy")</td>
+                        </tr>
+                        <tr>
+                            <th>Selling Option</th>
+                            <td>
+                                @if (@Model.LunchBoxManufacturer.IsSellingOnline)
+                                {
+                                    <text>Available Online</text>
+                                }
+                                else
+                                {
+                                    <text>Not Available Online</text>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Sales Revenue</th>
+                            <td>@Model.LunchBoxManufacturer.SalesRevenue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Lunch boxes manufactured</h3>
+            </div>
+            <div class="panel-body">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    @foreach (var lunchBox in Model.LunchBoxManufacturer.LunchBoxes)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-@lunchBox.Id">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@lunchBox.Id" aria-expanded="true" aria-controls="collapse-@lunchBox.Id">
+                                        @lunchBox.LunchBoxName
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse-@lunchBox.Id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-@lunchBox.Id">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><strong>IsMicrowaveSafe : </strong>@lunchBox.IsMicrowaveSafe</li>
+                                        <li><strong>LunchBoxName : </strong>@lunchBox.LunchBoxName</li>
+                                        <li><strong>Price : </strong>@lunchBox.Price</li>
+                                        <li><strong>SoldDate : </strong>@lunchBox.SoldDateStringFormat</li>
+                                        <li><strong>Description : </strong>@lunchBox.Description</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.LunchBoxManufacturer.LunchBoxes.Count > 0)
+                    {
+                        <div class="text-center" style="padding-top: 10px;">
+                            <a class="btn btn-default btn-block"> See All @Model.LunchBoxes.Count() Inspection Results </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -46,6 +46,17 @@ namespace CoreCrud.Pages.LunchBoxes
             {
                 return Page();
             }
+            
+            // Handle NULL cases
+            if (LunchBox.SoldDate == null)
+            {
+                LunchBox.SoldDate = new DateTime();
+            }
+
+            if (LunchBox.IsMicrowaveSafe == null)
+            {
+                LunchBox.IsMicrowaveSafe = false;
+            }
 
             _context.Attach(LunchBox).State = EntityState.Modified;
 

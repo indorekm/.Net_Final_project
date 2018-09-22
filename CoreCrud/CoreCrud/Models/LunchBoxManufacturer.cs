@@ -63,6 +63,8 @@ namespace CoreCrud.Models
         /// </value>
         public string Location { get; set; }
 
+        // RELATIONSHIPS
+
         /// <summary>
         /// Gets or sets the lunch boxes.
         /// </summary>

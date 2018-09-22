@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoreCrud.Models
 {
@@ -85,5 +86,56 @@ namespace CoreCrud.Models
         /// The lunch box manufacturer.
         /// </value>
         public LunchBoxManufacturer Manufacturer { get; set; }
+
+        // READONLY PROPERTIES
+
+        /// <summary>
+        /// Gets the weight category.
+        /// </summary>
+        /// <value>
+        /// The weight category.
+        /// </value>
+        [NotMapped]
+        public string WeightCategory
+        {
+            get
+            {
+                if (this.Weight < 3)
+                {
+                    return "Light Weight";
+                }
+                else if (this.Weight < 6)
+                {
+                    return "Medium Weight";
+                }
+                else
+                {
+                    return "Heavy Weight";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this lunch box is sold.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is sold; otherwise, <c>false</c>.
+        /// </value>
+        [NotMapped]
+        [Display(Name = "Sold Date")]
+        public string SoldDateStringFormat
+        {
+            get
+            {
+                if (this.SoldDate == null || this.SoldDate == new DateTime())
+                {
+                    return "N/A";
+                }
+                else
+                {
+                    return SoldDate?.ToString("MM-dd-yyyy");
+                }
+            }
+        }
     }
 }

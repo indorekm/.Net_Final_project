@@ -1,0 +1,56 @@
+﻿@page
+@model CoreCrud.Pages.Auction.AuctionModel
+@{
+    ViewData["Title"] = "Auction";
+}
+
+<h2>Auction</h2>
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> Auction list of unsold collectibles</h3>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].LunchBoxName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].Manufacturer)</th>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].Price)</th>
+                    <th>Auction Rate</th>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].Weight)</th>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].WeightCategory)</th>
+                    <th>@Html.DisplayNameFor(model => model.Collectibles[0].IsMicrowaveSafe)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lunchBox in Model.Collectibles)
+                {
+                <tr>
+                    <td>@lunchBox.LunchBoxName</td>
+                    <td><strong>@lunchBox.Manufacturer.Name</strong></td>
+                    <td>@lunchBox.Price</td>
+                    <td>
+                        @if (lunchBox.Price <= 3)
+                        {
+                            <text>Low rate</text>
+                        }
+                        else if (3 < lunchBox.Price && lunchBox.Price <= 7)
+                        {
+                            <text>Medium rate</text>
+                        }
+                        else
+                        {
+                            <text>High rate</text>
+                        }
+                    </td>
+                    <td>@lunchBox.Weight</td>
+                    <td>@lunchBox.WeightCategory</td>
+                    <td>@lunchBox.IsMicrowaveSafe</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

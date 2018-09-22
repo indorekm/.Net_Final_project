@@ -20,7 +20,7 @@ namespace CoreCrud.Pages.LunchBoxes
 
         public IActionResult OnGet()
         {
-        ViewData["ManufacturerId"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Id");
+            ViewData["ManufacturerId"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Id");
             return Page();
         }
 
@@ -32,6 +32,18 @@ namespace CoreCrud.Pages.LunchBoxes
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+
+            // Handle NULL cases
+            if (LunchBox.SoldDate == null)
+            {
+                LunchBox.SoldDate = new DateTime();
+            }
+
+            if (LunchBox.IsMicrowaveSafe == null)
+            {
+                LunchBox.IsMicrowaveSafe = false;
             }
 
             _context.LunchBox.Add(LunchBox);
