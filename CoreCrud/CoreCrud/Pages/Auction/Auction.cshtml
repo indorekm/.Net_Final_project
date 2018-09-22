@@ -26,28 +26,28 @@
             <tbody>
                 @foreach (var lunchBox in Model.Collectibles)
                 {
-                <tr>
-                    <td>@lunchBox.LunchBoxName</td>
-                    <td><strong>@lunchBox.Manufacturer.Name</strong></td>
-                    <td>@lunchBox.Price</td>
-                    <td>
-                        @if (lunchBox.Price <= 3)
-                        {
-                            <text>Low rate</text>
-                        }
-                        else if (3 < lunchBox.Price && lunchBox.Price <= 7)
-                        {
-                            <text>Medium rate</text>
-                        }
-                        else
-                        {
-                            <text>High rate</text>
-                        }
-                    </td>
-                    <td>@lunchBox.Weight</td>
-                    <td>@lunchBox.WeightCategory</td>
-                    <td>@lunchBox.IsMicrowaveSafe</td>
-                </tr>
+                    <tr>
+                        <td>@lunchBox.LunchBoxName</td>
+                        <td><strong>@lunchBox.Manufacturer.Name</strong></td>
+                        <td>@lunchBox.Price</td>
+                        <td>
+                            @if (lunchBox.Price <= 3)
+                            {
+                                <text>Low rate</text>
+                            }
+                            else if (3 < lunchBox.Price && lunchBox.Price <= 7)
+                            {
+                                <text>Medium rate</text>
+                            }
+                            else
+                            {
+                                <text>High rate</text>
+                            }
+                        </td>
+                        <td>@lunchBox.Weight</td>
+                        <td>@lunchBox.WeightCategory</td>
+                        <td>@lunchBox.IsMicrowaveSafe</td>
+                    </tr>
                 }
             </tbody>
         </table>
