@@ -96,6 +96,7 @@ namespace CoreCrud.Models
         /// The weight category.
         /// </value>
         [NotMapped]
+        [Display(Name = "Weight Category")]
         public string WeightCategory
         {
             get
