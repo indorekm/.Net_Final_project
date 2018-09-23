@@ -53,16 +53,17 @@
 <p>Welcome to largest collection of lunchboxes.<br /></p>
 
 <div class="row">
-    @*Lunch box Dashboard*@
-    <div class="col-md-3">
+    @*Dashboard*@
+    <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Lunchbox Dashboard</h3>
+                <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Dashboard</h3>
             </div>
+            @*Lunch box*@
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="2">Statistics</th>
+                        <th colspan="2">Lunch box Statistics</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,19 +81,11 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    @*Manufacturer Dashboard*@
-    <div class="col-md-3">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Manufacturer Dashboard</h3>
-            </div>
+            @*Manufacturer*@
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="2">Statistics</th>
+                        <th colspan="2">Manufacturer Statistics</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,32 +101,36 @@
             </table>
         </div>
     </div>
-
+ 
     @*Manufacturer Profile*@
-    <div class="col-md-3">
+    <div class="col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> Manufacturer's Profiles</h3>
             </div>
-            <ul>
+            <ul class="list-group">
                 @foreach (var manufacturer in Model.LunchBoxManufacturers)
                 {
-                    <li>
-                        <a href="/ManufacturerProfile/ManufacturerProfile?id=@manufacturer.Id">@manufacturer.Name</a>
-                    </li>
+                <li class="list-group-item">
+                    <a href="/ManufacturerProfile/ManufacturerProfile?id=@manufacturer.Id">@manufacturer.Name</a>
+                    : /ManufacturerProfile/ManufacturerProfile?id=@manufacturer.Id
+                </li>
                 }
             </ul>
         </div>
     </div>
 
     @*Auction link*@
-    <div class="col-md-3">
+    <div class="col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> Auction Link</h3>
             </div>
-            <ul>
-                <li><a asp-page="/Auction/Auction">Auction</a></li>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a asp-page="/Auction/Auction">Auction</a>
+                    : /Auction/Auction
+                </li>
             </ul>
         </div>
     </div>

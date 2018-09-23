@@ -24,6 +24,8 @@ namespace CoreCrud.Models
         /// <value>
         /// The name.
         /// </value>
+        [Required]
+        [StringLength(500, MinimumLength = 2)]
         public string Name { get; set; }
 
         /// <summary>
@@ -43,6 +45,8 @@ namespace CoreCrud.Models
         /// </value>
         [Display(Name = "Established On")]
         [DataType(DataType.Date)]
+        [Required]
+        [CustomValidation(typeof(LunchBoxManufacturer), "ValidateEstablishedOn")]
         public DateTime EstablishedOn { get; set; }
 
         /// <summary>
@@ -61,6 +65,7 @@ namespace CoreCrud.Models
         /// <value>
         /// The location.
         /// </value>
+        [Required]
         public string Location { get; set; }
 
         // RELATIONSHIPS
@@ -72,5 +77,27 @@ namespace CoreCrud.Models
         /// The lunch boxes.
         /// </value>
         public ICollection<LunchBox> LunchBoxes { get; set; }
+
+        // VALIDATION RULES
+        public static ValidationResult ValidateEstablishedOn(DateTime? establishedDate, ValidationContext context)
+        {
+            if (establishedDate == null)
+            {
+                return ValidationResult.Success;
+            }
+
+            LunchBoxManufacturer instance = context.ObjectInstance as LunchBoxManufacturer;
+            if (instance == null)
+            {
+                return ValidationResult.Success;
+            }
+
+            if(establishedDate.Value.Date < DateTime.Today)
+            {
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult("Enter valid date");
+        }
     }
 }

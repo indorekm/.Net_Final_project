@@ -30,7 +30,7 @@ namespace CoreCrud.Pages.LunchBoxManufacturers
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return OnGet();
             }
 
             _context.LunchBoxManufacturer.Add(LunchBoxManufacturer);

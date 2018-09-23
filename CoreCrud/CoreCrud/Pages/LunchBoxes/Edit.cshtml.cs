@@ -36,7 +36,7 @@ namespace CoreCrud.Pages.LunchBoxes
             {
                 return NotFound();
             }
-           ViewData["ManufacturerId"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Id");
+           ViewData["ManufacturerName"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Name");
             return Page();
         }
 

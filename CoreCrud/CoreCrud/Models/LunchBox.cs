@@ -25,6 +25,7 @@ namespace CoreCrud.Models
         /// The name of the lunch box.
         /// </value>
         [Display(Name = "Lunch Box Name")]
+        [Required]
         public string LunchBoxName { get; set; }
 
         /// <summary>
@@ -53,6 +54,8 @@ namespace CoreCrud.Models
         /// The price of lunch box.
         /// </value>
         [DataType(DataType.Currency)]
+        [Required]
+        [CustomValidation(typeof(LunchBox), "ValidatePrice")]
         public decimal Price { get; set; }
 
         /// <summary>
@@ -61,6 +64,8 @@ namespace CoreCrud.Models
         /// <value>
         /// The weight of lunch box.
         /// </value>
+        [Required]
+        [Range(0, 10000)]
         public float Weight { get; set; }
 
         /// <summary>
@@ -69,6 +74,7 @@ namespace CoreCrud.Models
         /// <value>
         /// The description for the lunch box.
         /// </value>
+        [StringLength(500)]
         public string Description { get; set; }
 
         /// <summary>
@@ -77,6 +83,7 @@ namespace CoreCrud.Models
         /// <value>
         /// The manufacturer identifier.
         /// </value>
+        [Display(Name = "Manufacturer")]
         public int ManufacturerId { get; set; }
 
         /// <summary>
@@ -136,6 +143,32 @@ namespace CoreCrud.Models
                 {
                     return SoldDate?.ToString("MM-dd-yyyy");
                 }
+            }
+        }
+
+        // VALIDATION RULES
+
+        public static ValidationResult ValidatePrice(decimal? price, ValidationContext context)
+        {
+            if(price == null)
+            {
+                return ValidationResult.Success;
+            }
+
+            LunchBox instance = context.ObjectInstance as LunchBox;
+            if(instance == null)
+            {
+                return ValidationResult.Success;
+            }
+
+            // Price should not be negative
+            if (price < 0)
+            {
+                return new ValidationResult("Enter valid price");
+            }
+            else
+            {
+                return ValidationResult.Success;
             }
         }
     }

@@ -18,7 +18,7 @@ namespace CoreCrud.Pages.LunchBoxes
 
         public IActionResult OnGet()
         {
-            ViewData["ManufacturerId"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Id");
+            ViewData["ManufacturerName"] = new SelectList(_context.LunchBoxManufacturer, "Id", "Name");
             return Page();
         }
 
