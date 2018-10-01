@@ -21,19 +21,23 @@ namespace CoreCrud.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
 
                     b.Property<bool?>("IsMicrowaveSafe");
 
-                    b.Property<string>("LunchBoxName");
+                    b.Property<string>("LunchBoxName")
+                        .IsRequired();
 
                     b.Property<int>("ManufacturerId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal?>("Price")
+                        .IsRequired();
 
-                    b.Property<DateTime>("SoldDate");
+                    b.Property<DateTime?>("SoldDate");
 
-                    b.Property<float>("Weight");
+                    b.Property<float?>("Weight")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -47,15 +51,22 @@ namespace CoreCrud.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("EstablishedOn");
+                    b.Property<string>("CellPhone")
+                        .HasMaxLength(10);
 
-                    b.Property<bool>("IsSellingOnline");
+                    b.Property<DateTime?>("EstablishedOn")
+                        .IsRequired();
 
-                    b.Property<string>("Location");
+                    b.Property<bool?>("IsSellingOnline");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Location")
+                        .IsRequired();
 
-                    b.Property<decimal>("SalesRevenue");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<decimal?>("SalesRevenue");
 
                     b.HasKey("Id");
 

@@ -20,11 +20,9 @@
                 <span asp-validation-for="LunchBoxManufacturer.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="LunchBoxManufacturer.IsSellingOnline" /> @Html.DisplayNameFor(model => model.LunchBoxManufacturer.IsSellingOnline)
-                    </label>
-                </div>
+                <label asp-for="LunchBoxManufacturer.IsSellingOnline" class="control-label"></label>
+                <input asp-for="LunchBoxManufacturer.IsSellingOnline" class="form-control" />
+                <span asp-validation-for="LunchBoxManufacturer.IsSellingOnline" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LunchBoxManufacturer.EstablishedOn" class="control-label"></label>
@@ -40,6 +38,11 @@
                 <label asp-for="LunchBoxManufacturer.Location" class="control-label"></label>
                 <input asp-for="LunchBoxManufacturer.Location" class="form-control" />
                 <span asp-validation-for="LunchBoxManufacturer.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LunchBoxManufacturer.CellPhone" class="control-label"></label>
+                <input asp-for="LunchBoxManufacturer.CellPhone" class="form-control" />
+                <span asp-validation-for="LunchBoxManufacturer.CellPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreCrud.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CoreCrudDB_V1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,12 @@ namespace CoreCrud.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    IsSellingOnline = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(maxLength: 500, nullable: false),
+                    IsSellingOnline = table.Column<bool>(nullable: true),
                     EstablishedOn = table.Column<DateTime>(nullable: false),
-                    SalesRevenue = table.Column<decimal>(nullable: false),
-                    Location = table.Column<string>(nullable: true)
+                    SalesRevenue = table.Column<decimal>(nullable: true),
+                    Location = table.Column<string>(nullable: false),
+                    CellPhone = table.Column<string>(maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,12 +31,12 @@ namespace CoreCrud.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LunchBoxName = table.Column<string>(nullable: true),
-                    SoldDate = table.Column<DateTime>(nullable: false),
+                    LunchBoxName = table.Column<string>(nullable: false),
+                    SoldDate = table.Column<DateTime>(nullable: true),
                     IsMicrowaveSafe = table.Column<bool>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     Weight = table.Column<float>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(maxLength: 500, nullable: true),
                     ManufacturerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

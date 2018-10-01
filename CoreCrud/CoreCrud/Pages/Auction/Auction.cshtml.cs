@@ -40,12 +40,14 @@ namespace CoreCrud.Pages.Auction
         /// </summary>
         public void OnGet()
         {
+            // first get all lunch boxes
+            var lunchBoxes = _context.LunchBox.Include(lunchBox => lunchBox.Manufacturer).ToList();
+
             // get collectibles which are not sold 
             // and sort by price
-            Collectibles = _context.LunchBox
+            Collectibles = lunchBoxes
                 .OrderBy(lunchBox => lunchBox.LunchBoxName)
-                .Where(lunchBox => lunchBox.SoldDate == new System.DateTime())
-                .Include(lunchBox => lunchBox.Manufacturer)                
+                .Where(lunchBox => lunchBox.SoldDate == null || lunchBox.SoldDate.Value == new System.DateTime())
                 .ToList();
         }
     }

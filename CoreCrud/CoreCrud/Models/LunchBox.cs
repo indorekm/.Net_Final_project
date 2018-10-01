@@ -25,6 +25,7 @@ namespace CoreCrud.Models
         /// The name of the lunch box.
         /// </value>
         [Display(Name = "Lunch Box Name")]
+        [RegularExpression("[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$", ErrorMessage = "Please enter name properly")]
         [Required]
         public string LunchBoxName { get; set; }
 
@@ -44,7 +45,7 @@ namespace CoreCrud.Models
         /// <value>
         ///   <c>true</c> if the luch box is microwave safe; otherwise, <c>false</c>.
         /// </value>
-        [Display(Name = "Is Microwave Safe?")]
+        [Display(Name = "Is Microwave Safe?")]        
         public bool? IsMicrowaveSafe { get; set; }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace CoreCrud.Models
         [DataType(DataType.Currency)]
         [Required]
         [CustomValidation(typeof(LunchBox), "ValidatePrice")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         /// <summary>
         /// Gets or sets the weight of lunch box.
@@ -65,8 +66,8 @@ namespace CoreCrud.Models
         /// The weight of lunch box.
         /// </value>
         [Required]
-        [Range(0, 10000)]
-        public float Weight { get; set; }
+        [Range(0, 100, ErrorMessage = "Weight of standard lunch box is between 0 to 100")]
+        public float? Weight { get; set; }
 
         /// <summary>
         /// Gets or sets the description for the lunch box.

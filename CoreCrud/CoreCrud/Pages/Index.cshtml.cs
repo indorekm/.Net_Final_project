@@ -73,8 +73,6 @@ namespace CoreCrud.Pages
         /// </value>
         public int CountOfManufacturerSellingOnline { get; set; }
 
-
-
         /// <summary>
         /// Called when [get].
         /// </summary>
@@ -83,18 +81,19 @@ namespace CoreCrud.Pages
             LunchBoxManufacturers = _context.LunchBoxManufacturer.ToList();
 
             // for lunch boxes
-            CountOfLunchBox = _context.LunchBox.Count();
-            CountOfLunchBoxSold = _context.LunchBox
-                .Where(lunchBox => lunchBox.SoldDate != new DateTime())
+            var lunchBoxes = _context.LunchBox.ToList();
+            CountOfLunchBox = lunchBoxes.Count();
+            CountOfLunchBoxSold = lunchBoxes
+                .Where(lunchBox => lunchBox.SoldDate.HasValue && lunchBox.SoldDate != new DateTime())
                 .Count();
-            CountOfLunchBoxNotSold = _context.LunchBox
-                .Where(lunchBox => lunchBox.SoldDate == new DateTime())
+            CountOfLunchBoxNotSold = lunchBoxes
+                .Where(lunchBox => lunchBox.SoldDate == null || lunchBox.SoldDate.Value == new System.DateTime())
                 .Count();
 
             // for manufacturers
-            CountOfManufacturer = _context.LunchBoxManufacturer.Count();
-            CountOfManufacturerSellingOnline = _context.LunchBoxManufacturer
-                .Where(manufacturer => manufacturer.IsSellingOnline)
+            CountOfManufacturer = LunchBoxManufacturers.Count();
+            CountOfManufacturerSellingOnline = LunchBoxManufacturers
+                .Where(manufacturer => manufacturer.IsSellingOnline.Value)
                 .Count();
         }
     }

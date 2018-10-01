@@ -32,12 +32,12 @@
                     <tbody>
                         <tr>
                             <th>Established On</th>
-                            <td>@Model.LunchBoxManufacturer.EstablishedOn.ToString("MMMM dd, yyyy")</td>
+                            <td>@Model.LunchBoxManufacturer.EstablishedOn.Value.ToString("MMMM dd, yyyy")</td>
                         </tr>
                         <tr>
                             <th>Selling Option</th>
                             <td>
-                                @if (@Model.LunchBoxManufacturer.IsSellingOnline)
+                                @if (@Model.LunchBoxManufacturer.IsSellingOnline.Value)
                                 {
                                     <text>Available Online</text>
                                 }
