@@ -1,0 +1,112 @@
+﻿@page
+@model GymManagementSystem.Pages.TrainerProfileModel
+@{
+    ViewData["Title"] = $"Trainer Profile: {Model.Trainer.Name}";
+}
+
+<h1 class="text-muted" style="padding-top: 20px;">Trainer Profile: @Model.Trainer.Name</h1>
+<hr />
+
+<div class="row" style="margin-top: 40px;">
+    <div class="col-md-6">
+
+        @*Personal Info*@
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-user"></i> Personal Information </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>First Name</th>
+                            <td>@Model.Trainer.FirstName</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td>@Model.Trainer.LastName</td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td>@Model.Trainer.Gender</td>
+                        </tr>
+                        <tr>
+                            <th>Age</th>
+                            <td>@Model.Trainer.Age</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @*Professional Info*@
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-road"></i> Professional Information</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Speciality</th>
+                            <td>@Model.Trainer.Specialty</td>
+                        </tr>
+                        <tr>
+                            <th>Start Date</th>
+                            <td>@Model.Trainer.StartDate.Value.Date.ToShortDateString()</td>
+                        </tr>
+                        <tr>
+                            <th>Experience</th>
+                            <td>@Model.Trainer.Experience days</td>
+                        </tr>
+                        <tr>
+                            <th>Salary</th>
+                            <td>$ @Model.Trainer.Salary</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    @*Lunch boxes manufactured*@
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-calendar"></i> Trainers Schedule</h3>
+            </div>
+            <div class="panel-body">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    @foreach (var day in Model.TrainerSchedules)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-@day.Item1">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@day.Item1" aria-expanded="true" aria-controls="collapse-@day.Item1">
+                                        @day.Item1
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse-@day.Item1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-@day.Item1">
+                                <div class="panel-body">
+                                    @foreach (var schedule in day.Item2.OrderBy(x => x.ProgramName).ToList())
+                                    {
+                                    <ul>
+                                        <li><strong>Program : </strong>@schedule.ProgramName</li>
+                                        <li><strong>Day : </strong>@schedule.Day</li>
+                                        <li><strong>Start Time : </strong>@schedule.StartTime.Value.ToShortTimeString()</li>
+                                        <li><strong>End Time : </strong>@schedule.EndTime.Value.ToShortTimeString()</li>                                        
+                                    </ul>
+                                    }
+                                    </div>
+                            </div>
+                        </div>
+                    }                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

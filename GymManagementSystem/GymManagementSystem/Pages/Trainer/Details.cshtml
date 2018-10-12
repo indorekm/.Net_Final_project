@@ -1,0 +1,61 @@
+﻿@page
+@model GymManagementSystem.Pages.Trainer.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.Gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.Gender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.BirthDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.BirthDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.Specialty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.Specialty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.Salary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.Salary)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Trainer.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,48 @@
+﻿@page
+@model GymManagementSystem.Pages.Membership.IndexModel
+
+@{
+    ViewData["Title"] = "Memberships";
+}
+
+<h2>Memberships</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership[0].MembershipType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership[0].Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership[0].MembershipFee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Membership) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration) days
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.MembershipFee)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

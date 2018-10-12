@@ -1,0 +1,70 @@
+﻿@page
+@model GymManagementSystem.Pages.SearchScheduleModel
+@{
+    ViewData["Title"] = "Search Trainer's Schedule";
+}
+
+<h2>Search Trainer's Schedule</h2>
+
+
+<form action="" method="POST" style="margin-top: 50px;">
+    <div class="form-group">
+        <label class="control-label" for="SearchTrainerId">Trainer</label>
+        <select asp-for="SearchTrainerId" class="form-control" asp-items="ViewBag.Trainers"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search Schedule" class="btn btn-default" />
+    </div>
+</form>
+
+@if (Model.SearchCompleted)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Program Name</th>
+                <th>Trainer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.SearchResults.Count > 0)
+            {
+                @foreach (var schedule in Model.SearchResults)
+                {
+            <tr>
+                <td>@schedule.Id</td>
+                <td>@schedule.Day</td>
+                <td>
+                    @schedule.StartTime.Value.ToShortTimeString()
+                </td>
+                <td>
+                    @schedule.EndTime.Value.ToShortTimeString()
+                </td>
+                <td>@schedule.ProgramName</td>
+                <td>@schedule.Trainer.FirstName @schedule.Trainer.LastName</td>
+            </tr>
+                }
+            }
+            else
+            {
+                <tr class="danger">
+                    <td colspan="4" class="text-center">
+                        No results found for term "@Model.SearchTrainerId"
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>
+            Enter the search terms into the box and click <strong>Search Schedule</strong>
+        </p>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@page
+@model GymManagementSystem.Pages.Schedule.DetailsModel
+
+@{
+    ViewData["Title"] = "Schedule Details";
+}
+
+<h2>Schedule Details</h2>
+
+<div>    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.Day)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.Day)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.ProgramName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.ProgramName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.StartTime.Value.TimeOfDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.EndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.EndTime.Value.TimeOfDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.Trainer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.Trainer.FirstName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Schedule.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

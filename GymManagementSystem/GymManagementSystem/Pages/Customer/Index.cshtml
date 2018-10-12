@@ -1,0 +1,96 @@
+﻿@page
+@model GymManagementSystem.Pages.Customer.IndexModel
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h2>Customers</h2>
+
+<p>
+    <a asp-page="Create">Create New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].JoinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Membership)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Schedule)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @item.FirstName @item.LastName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Membership.MembershipType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
