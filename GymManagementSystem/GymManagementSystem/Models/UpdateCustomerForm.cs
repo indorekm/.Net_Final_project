@@ -11,9 +11,7 @@ namespace GymManagementSystem.Models
     /// </summary>
     public class UpdateCustomerForm
     {
-        /// <summary>
-        /// The customer identifier
-        /// </summary>
+        // STATIC FIELD
         public static int? CustomerId;
 
         [Display(Name = "Schedule")]
@@ -54,7 +52,7 @@ namespace GymManagementSystem.Models
         public static ValidationResult ValidateCustomer(int? customerId, ValidationContext context)
         {
             var dbContext = context.GetService(typeof(GymDbContext)) as GymDbContext;
-            // First Validate customer
+            
             var customer = dbContext.Customers
                 .Include(cust => cust.Schedule)
                 .Include(cust => cust.Membership)
