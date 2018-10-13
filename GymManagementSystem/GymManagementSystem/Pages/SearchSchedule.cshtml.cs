@@ -36,7 +36,7 @@ namespace GymManagementSystem.Pages
 
         private void FillTrainerList()
         {
-            ViewData["Trainers"] = new SelectList(_context.Trainers, "Id", "Name");            
+            ViewData["Trainers"] = new SelectList(_context.Trainers, "Id", "Name");
         }
 
         public void OnPost()

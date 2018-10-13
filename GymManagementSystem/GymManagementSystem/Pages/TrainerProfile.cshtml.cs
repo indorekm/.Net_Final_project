@@ -20,7 +20,6 @@ namespace GymManagementSystem.Pages
         public Models.Trainer Trainer { get; set; }
 
         public List<Tuple<System.DayOfWeek, List<Models.Schedule>>> TrainerSchedules { get; set; }
-        
 
         public IActionResult OnGet(int? id)
         {
@@ -35,14 +34,14 @@ namespace GymManagementSystem.Pages
             if (Trainer == null)
             {
                 return NotFound();
-            }            
+            }
 
             TrainerSchedules = _context.Schedules
                 .Include(s => s.Trainer)
                 .Where(s => s.TrainerId == id)
                 .GroupBy(s => new { s.Day })
                 .OrderBy(s => s.Key.Day)
-                .Select(s => Tuple.Create(s.Key.Day, s.ToList())).ToList();                                
+                .Select(s => Tuple.Create(s.Key.Day, s.ToList())).ToList();
 
             return Page();
         }

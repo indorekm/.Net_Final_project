@@ -1,0 +1,57 @@
+﻿@page
+@model GymManagementSystem.Pages.ScheduleAsDaysModel
+@{
+    ViewData["Title"] = "Days Schedule";
+}
+<br />
+@*Trainers Schedule*@
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="panel-title"><i class="glyphicon glyphicon-calendar"></i> Days Schedule</h2>
+        </div>
+        <div class="panel-body">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                @foreach (var day in Model.Schedules)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading-@day.Item1">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@day.Item1" aria-expanded="true" aria-controls="collapse-@day.Item1">
+                                    @day.Item1
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-@day.Item1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-@day.Item1">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="glyphicon glyphicon-sort-by-alphabet"></i> Program </th>
+                                            <th> Day </th>
+                                            <th> Start Time </th>
+                                            <th> End Time </th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var schedule in day.Item2.OrderBy(x => x.ProgramName).ToList())
+                                    {
+                                        <tbody>
+                                            <tr>
+                                                <td>@schedule.ProgramName</td>
+                                                <td>@schedule.Day</td>
+                                                <td>@schedule.StartTime.Value.ToShortTimeString()</td>
+                                                <td>@schedule.EndTime.Value.ToShortTimeString()</td>                                                
+                                            </tr>
+                                        </tbody>
+                                    }
+                                    </table>
+</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+</div>

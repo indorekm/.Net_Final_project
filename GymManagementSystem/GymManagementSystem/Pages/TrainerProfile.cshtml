@@ -70,7 +70,7 @@
 
     </div>
 
-    @*Lunch boxes manufactured*@
+    @*Trainers Schedule*@
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -93,17 +93,17 @@
                                 <div class="panel-body">
                                     @foreach (var schedule in day.Item2.OrderBy(x => x.ProgramName).ToList())
                                     {
-                                    <ul>
-                                        <li><strong>Program : </strong>@schedule.ProgramName</li>
-                                        <li><strong>Day : </strong>@schedule.Day</li>
-                                        <li><strong>Start Time : </strong>@schedule.StartTime.Value.ToShortTimeString()</li>
-                                        <li><strong>End Time : </strong>@schedule.EndTime.Value.ToShortTimeString()</li>                                        
-                                    </ul>
+                                        <ul>
+                                            <li><strong>Program : </strong>@schedule.ProgramName</li>
+                                            <li><strong>Day : </strong>@schedule.Day</li>
+                                            <li><strong>Start Time : </strong>@schedule.StartTime.Value.ToShortTimeString()</li>
+                                            <li><strong>End Time : </strong>@schedule.EndTime.Value.ToShortTimeString()</li>
+                                        </ul>
                                     }
-                                    </div>
+                                </div>
                             </div>
                         </div>
-                    }                    
+                    }
                 </div>
             </div>
         </div>
