@@ -47,6 +47,8 @@ namespace GymManagementSystem.Pages.Customer
         {
             if (!ModelState.IsValid)
             {
+                ViewData["MembershipId"] = new SelectList(_context.Membership, "Id", "Id");
+                ViewData["ScheduleId"] = new SelectList(_context.Schedules, "Id", "Id");
                 return Page();
             }
 
