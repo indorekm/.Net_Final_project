@@ -111,7 +111,13 @@ namespace GymManagementSystem.Models
 
         // VALIDATIONS
          public static ValidationResult GenderValidation(string Gender, ValidationContext context) {
+            if (string.IsNullOrWhiteSpace(Gender)) {
+                return ValidationResult.Success;
+            }
             var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (!Gender.ToLower().Equals("male") && !Gender.ToLower().Equals("female") && !Gender.ToLower().Equals("other")) {
                return new ValidationResult($"Gender can be Male, Female or Other");
             }
@@ -119,7 +125,13 @@ namespace GymManagementSystem.Models
         }
 
            public static ValidationResult DateValidation(DateTime? Date, ValidationContext context) {
-
+            if (Date == null) {
+                return ValidationResult.Success;
+            }
+            var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (Date < DateTime.Today) {
                 return ValidationResult.Success;
             }

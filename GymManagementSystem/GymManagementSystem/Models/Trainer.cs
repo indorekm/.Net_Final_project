@@ -81,6 +81,9 @@ namespace GymManagementSystem.Models
         // VALIDATIONS
         public static ValidationResult SpecialityValidation(string Speciality, ValidationContext context) {
             var instance = context.ObjectInstance as Trainer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if(Speciality == null){
                 return ValidationResult.Success;
             }else if (!Speciality.ToLower().Equals("yoga") && !Speciality.ToLower().Equals("zumba") && !Speciality.ToLower().Equals("weight training") 
@@ -92,6 +95,9 @@ namespace GymManagementSystem.Models
 
           public static ValidationResult GenderValidation(string Gender, ValidationContext context) {
             var instance = context.ObjectInstance as Trainer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (!Gender.ToLower().Equals("male") && !Gender.ToLower().Equals("female") && !Gender.ToLower().Equals("other")) {
                return new ValidationResult($"Gender can be Male, Female or Other");
             }
@@ -99,7 +105,13 @@ namespace GymManagementSystem.Models
         }
 
            public static ValidationResult DateValidation(DateTime? Date, ValidationContext context) {
-
+             if (Date == null) {
+                return ValidationResult.Success;
+            }
+            var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (Date < DateTime.Today) {
                 return ValidationResult.Success;
             }
