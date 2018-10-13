@@ -25,6 +25,9 @@ namespace GymManagementSystem.Models
           // VALIDATIONS
         public static ValidationResult MembershipValidation(string Membership, ValidationContext context) {
             var instance = context.ObjectInstance as Membership;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (!Membership.ToLower().Equals("regular") && !Membership.ToLower().Equals("express") && !Membership.ToLower().Equals("premuim") 
                 && !Membership.ToLower().Equals("platinum")) {
                return new ValidationResult($"Speciality can either be Regular, Express, Premuim, Platinum");

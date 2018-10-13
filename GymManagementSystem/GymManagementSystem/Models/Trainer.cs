@@ -81,6 +81,9 @@ namespace GymManagementSystem.Models
         // VALIDATIONS
         public static ValidationResult SpecialityValidation(string Speciality, ValidationContext context) {
             var instance = context.ObjectInstance as Trainer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if(Speciality == null){
                 return ValidationResult.Success;
             }else if (!Speciality.ToLower().Equals("yoga") && !Speciality.ToLower().Equals("zumba") && !Speciality.ToLower().Equals("weight training") 
@@ -92,6 +95,9 @@ namespace GymManagementSystem.Models
 
           public static ValidationResult GenderValidation(string Gender, ValidationContext context) {
             var instance = context.ObjectInstance as Trainer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (!Gender.ToLower().Equals("male") && !Gender.ToLower().Equals("female") && !Gender.ToLower().Equals("other")) {
                return new ValidationResult($"Gender can be Male, Female or Other");
             }
@@ -99,11 +105,18 @@ namespace GymManagementSystem.Models
         }
 
            public static ValidationResult DateValidation(DateTime? Date, ValidationContext context) {
-
-            if (Date < DateTime.Today) {
+             if (Date == null) {
                 return ValidationResult.Success;
             }
-            return new ValidationResult("Date must be in the past");
+            var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
+            var diff = ((DateTime.Today - Date).Value.TotalDays)/365;
+            if (diff < 18) {
+                return new ValidationResult("Trainer should be above 18 years of age");
+            }
+            return ValidationResult.Success;
         }
     }
 }

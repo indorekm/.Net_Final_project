@@ -47,7 +47,10 @@ namespace GymManagementSystem.Models
 
         // VALIDATIONS
         public static ValidationResult ProgramValidation(string Program, ValidationContext context) {
-            //var instance = context.ObjectInstance as Schedule;
+            var instance = context.ObjectInstance as Schedule;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
             if (!Program.ToLower().Equals("yoga") && !Program.ToLower().Equals("zumba") && !Program.ToLower().Equals("weight training") 
                 && !Program.ToLower().Equals("jumbo ciruit training")) {
                return new ValidationResult($"Program can either be Yoga, Zumba, Weight Training or Jumbo Ciruit Training");
@@ -56,7 +59,14 @@ namespace GymManagementSystem.Models
         }
 
         public static ValidationResult DateTimeValidation(DateTime? Time, ValidationContext context) {
-           if (Time > DateTime.Today) {
+            if (Time == null) {
+                return ValidationResult.Success;
+            }
+            var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
+            if (Time > DateTime.Today) {
                 return ValidationResult.Success;
             }
             return new ValidationResult("Date must be in the Future");
