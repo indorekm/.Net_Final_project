@@ -12,7 +12,7 @@ namespace GymManagementSystem.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "FITNESS IS A LIFESTYLE AND NOT A ROUTINE TO BE PERFORMED AS A CHORE";
         }
     }
 }
