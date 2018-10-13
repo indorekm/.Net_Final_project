@@ -27,13 +27,13 @@ namespace GymManagementSystem.Models
 
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Please provide a Birth Date")]
-        [CustomValidation(typeof(Customer), "DateValidation")]
+        [CustomValidation(typeof(Customer), "BirthValidation")]
         [Display(Name = "Birth Date")]
         public DateTime? BirthDate { get; set; }        
 
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Please provide a Joining Date")]
-        [CustomValidation(typeof(Customer), "DateValidation")]
+        [CustomValidation(typeof(Customer), "JoinValidation")]
         [Display(Name = "Joining Date")]
         public DateTime? JoinDate { get; set; }
 
@@ -124,7 +124,7 @@ namespace GymManagementSystem.Models
             return ValidationResult.Success;
         }
 
-           public static ValidationResult DateValidation(DateTime? Date, ValidationContext context) {
+           public static ValidationResult JoinValidation(DateTime? Date, ValidationContext context) {
             if (Date == null) {
                 return ValidationResult.Success;
             }
@@ -136,6 +136,21 @@ namespace GymManagementSystem.Models
                 return ValidationResult.Success;
             }
             return new ValidationResult("Date must be in the past");
+        }
+        public static ValidationResult BirthValidation(DateTime? Date, ValidationContext context) {
+            if (Date == null) {
+                return ValidationResult.Success;
+            }
+            var instance = context.ObjectInstance as Customer;
+            if (instance == null) {
+                return ValidationResult.Success;
+            }
+
+            var diff = ((DateTime.Today - Date).Value.TotalDays)/365;
+            if (diff < 18) {
+                return new ValidationResult("Customer should be above 18 years of age");
+            }
+            return ValidationResult.Success;
         }
     }
 }

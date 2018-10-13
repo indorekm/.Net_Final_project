@@ -112,10 +112,11 @@ namespace GymManagementSystem.Models
             if (instance == null) {
                 return ValidationResult.Success;
             }
-            if (Date < DateTime.Today) {
-                return ValidationResult.Success;
+            var diff = ((DateTime.Today - Date).Value.TotalDays)/365;
+            if (diff < 18) {
+                return new ValidationResult("Trainer should be above 18 years of age");
             }
-            return new ValidationResult("Date must be in the past");
+            return ValidationResult.Success;
         }
     }
 }
