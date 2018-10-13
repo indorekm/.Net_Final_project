@@ -1,0 +1,64 @@
+﻿@page
+@model GymManagementSystem.Pages.CustomersWithMembership
+@{
+    ViewData["Title"] = "Customers With Membership";
+}
+
+<br />
+<div class="row">
+    @*Customers with Programs*@
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title"><i class="glyphicon glyphicon-list"></i> Customers With Membership</h2>
+            </div>
+            <div class="panel-body">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    @foreach (var membership in Model.Customers)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-@membership.Item1">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@membership.Item1" aria-expanded="true" aria-controls="collapse-@membership.Item1">
+                                        @membership.Item1
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse-@membership.Item1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-@membership.Item1">
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Name)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Age)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Bmi)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Gender)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Schedule.Description)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Customers[0].Item2[0].Membership.MembershipType)</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach (var customer in membership.Item2.OrderBy(x => x.Name).ToList())
+                                        {
+                                            <tbody>
+                                                <tr>
+                                                    <td>@customer.Name</td>
+                                                    <td>@customer.Age</td>
+                                                    <td>@customer.Bmi</td>
+                                                    <td>@customer.Gender</td>
+                                                    <td>@customer.Schedule.Description</td>
+                                                    <td>@customer.Membership.MembershipType</td>
+                                                </tr>
+                                            </tbody>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
