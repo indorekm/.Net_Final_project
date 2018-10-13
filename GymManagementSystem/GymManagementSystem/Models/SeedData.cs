@@ -188,7 +188,7 @@ namespace GymManagementSystem.Models
                         BirthDate = new DateTime(1985, 03, 15),
                         Gender = "Male",
                         StartDate = new DateTime(2012, 06, 01),
-                        Salary = 3500,                        
+                        Salary = 15,                        
                         Specialty = "Yoga"
                     },
                     new Trainer
@@ -199,7 +199,7 @@ namespace GymManagementSystem.Models
                         BirthDate = new DateTime(1995, 09, 24),
                         Gender = "Female",
                         StartDate = new DateTime(2017, 01, 15),
-                        Salary = 4500,
+                        Salary = 20,
                         Specialty = "Zumba"
                     },
                     new Trainer
@@ -210,7 +210,7 @@ namespace GymManagementSystem.Models
                         BirthDate = new DateTime(1988, 12, 09),
                         Gender = "Male",
                         StartDate = new DateTime(2016, 08, 01),
-                        Salary = 5000,
+                        Salary = 25,
                         Specialty = "Weight Training"
                     },
                     new Trainer
@@ -221,7 +221,7 @@ namespace GymManagementSystem.Models
                         BirthDate = new DateTime(1992, 02, 09),
                         Gender = "Male",
                         StartDate = new DateTime(2015, 05, 01),
-                        Salary = 6000,
+                        Salary = 30,
                         Specialty = "Jumbo Circuit Training"
                     }
                     );

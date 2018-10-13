@@ -20,10 +20,9 @@ namespace GymManagementSystem.Pages
         public void OnGet()
         {
             ActiveCustomer = _context.Customers
-                .Include(c => c.Membership)
-                .Include(c => c.Schedule)
-                .Where(c => c.IsCustomerActive) // Get Only Active Customers - within active Membership
-                .OrderBy(c=> c.Name).ToList();                       
+                 .Include(c => c.Membership)
+                 .Include(c => c.Schedule)
+                 .OrderBy(c => c.Name).ToList();
         }
     }
 }
