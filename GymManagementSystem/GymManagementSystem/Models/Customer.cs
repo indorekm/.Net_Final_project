@@ -78,6 +78,11 @@ namespace GymManagementSystem.Models
             get { return GetBmi(); }
         }
 
+        public bool IsCustomerActive
+        {
+            get { return CheckCustomerActive(); }
+        }
+
         private int GetAge()
         {
             int age = 0;
@@ -96,6 +101,17 @@ namespace GymManagementSystem.Models
                 bmi = Weight.Value * 100 / (Height.Value * Height.Value);
             }
             return bmi;
+        }
+
+        private bool CheckCustomerActive()
+        {
+            bool isActive = false;
+            var daysSinceJoined = (DateTime.Today - JoinDate).Value.TotalDays;
+            if (daysSinceJoined <= Membership.Duration)
+            {
+                isActive = true;
+            }
+            return isActive;
         }
 
         // RELATIONSHIP
