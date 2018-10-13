@@ -701,7 +701,7 @@ namespace GymManagementSystem.Models
                         Gender = "Male",
                         Email = "lj@gmail.com",
                         PhoneNumber = "5130954224",
-                        ZipCode = "45225",
+                        ZipCode = "45225",  
                         JoinDate = new DateTime(2014, 01, 20),
                         Height = 190,
                         Weight = 90,

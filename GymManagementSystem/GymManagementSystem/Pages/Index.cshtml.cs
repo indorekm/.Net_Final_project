@@ -47,7 +47,7 @@ namespace GymManagementSystem.Pages
             TotalCustomers = customers.Count();
             MaleCustomers = customers.Where(cust => cust.Gender.ToLower() == "male").Count();
             FemaleCustomers = customers.Where(cust => cust.Gender.ToLower() == "female").Count();
-            CustomersWithYearlyMembership = customers.Where(cust => cust.Membership.MembershipType == "Yearly").Count();
+            CustomersWithYearlyMembership = customers.Where(cust => cust.Membership.MembershipType.ToLower() == "platinum").Count();
 
             // Trainers stats
             Trainers = _context.Trainers.ToList();

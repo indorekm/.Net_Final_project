@@ -19,8 +19,9 @@ namespace GymManagementSystem.Models
         [CustomValidation(typeof(UpdateCustomerForm), "ValidateSchedule")]
         public int? ScheduleId { get; set; }        
 
+        [Display(Name = "Height(cms)")]
         public int? Height { get; set; }
-
+        [Display(Name = "Weight(kgs)")]
         public int? Weight { get; set; }
 
         public static ValidationResult ValidateSchedule(int? scheduleId, ValidationContext context)
