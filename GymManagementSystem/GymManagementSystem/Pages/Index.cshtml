@@ -37,21 +37,119 @@
 <br />
 <div>
     <p>
-MusclePro has learnt from various traditional and neo fitness models such as HIIT, Yoga, MMA, Endurance Training, Dance, Calisthenics 
-and evolved its own brand of exercise sciences based Functional Fitness model. The training methodology is a mix of both functional 
-training and weight training used together as the best mix to help attain the client's fitness goals. 
-</p>
+        MusclePro has learnt from various traditional and neo fitness models such as HIIT, Yoga, MMA, Endurance Training, Dance, Calisthenics
+        and evolved its own brand of exercise sciences based Functional Fitness model. The training methodology is a mix of both functional
+        training and weight training used together as the best mix to help attain the client's fitness goals.
+    </p>
 
-<p>
-    Our specially tailored programs to individual requirements and group sessions helps you build and achieve your fitness goals.We offer a complete holistic approach to fitness that targets all the different aspects of fitness like strength, stamina, endurance, 
-flexibility, agility, speed and power, and is undoubtedly, the best way to experience fitness.
-</p>
+    <div class="row">
+        @*Dashboard*@
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Dashboard </h3>
+                </div>
+                @*Customer stats*@
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Members Insight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Members</td>
+                            <td class="text-right">@Model.TotalCustomers</td>
+                        </tr>
+                        <tr>
+                            <td>Male Members</td>
+                            <td class="text-right">@Model.MaleCustomers</td>
+                        </tr>
+                        <tr>
+                            <td>Female Members</td>
+                            <td class="text-right">@Model.FemaleCustomers</td>
+                        </tr>
+                        <tr>
+                            <td>Yearly Membership Customers</td>
+                            <td class="text-right">@Model.CustomersWithYearlyMembership</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-<p>
-<strong>So what are you waiting for? Be our member and transform your body to achieve you fitness goals.</strong>
-</p>
+                @*Trainers*@
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Trainers Insight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Trainers</td>
+                            <td class="text-right">@Model.TotalTrainers</td>
+                        </tr>
+                        <tr>
+                            <td>Male Trainers</td>
+                            <td class="text-right">@Model.MaleTrainers</td>
+                        </tr>
+                        <tr>
+                            <td>Female Trainers</td>
+                            <td class="text-right">@Model.FemaleTrainers</td>
+                        </tr>
+                        <tr>
+                            <td>Trainers more than 5 yrs Exp</td>
+                            <td class="text-right">@Model.FivePlusExperienceTrainers</td>
+                        </tr>
+                        <tr>
+                            <td>Training Schedules</td>
+                            <td class="text-right">@Model.TotalSchedules</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+        @*Trainer's Profile*@
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> Trainer's Profiles</h3>
+                </div>
+                <ul class="list-group">
+                    @foreach (var trainer in Model.Trainers)
+                    {
+                        <li class="list-group-item">
+                            <a asp-page="/TrainerProfile" asp-route-id="@trainer.Id">@trainer.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
 
+        @*Other link*@
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i> More Info </h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a asp-page="/ScheduleAsDays">Days Schedule</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a asp-page="/ActiveCustomers">Active Customers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        Our specially tailored programs to individual requirements and group sessions helps you build and achieve your fitness goals.We offer a complete holistic approach to fitness that targets all the different aspects of fitness like strength, stamina, endurance,
+        flexibility, agility, speed and power, and is undoubtedly, the best way to experience fitness.
+    </p>
+
+    <p>
+        <strong>So what are you waiting for? Be our member and transform your body to achieve you fitness goals.</strong>
+    </p>
 </div>
-
-
