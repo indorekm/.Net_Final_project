@@ -21,8 +21,8 @@ namespace GymManagementSystem.Pages.Customer
 
         public IActionResult OnGet()
         {
-        ViewData["MembershipId"] = new SelectList(_context.Membership, "Id", "Id");
-        ViewData["ScheduleId"] = new SelectList(_context.Schedules, "Id", "Id");
+        ViewData["MembershipId"] = new SelectList(_context.Membership, "Id", "MembershipType");
+                ViewData["ScheduleId"] = new SelectList(_context.Schedules, "Id", "Description");
             return Page();
         }
 
@@ -33,6 +33,8 @@ namespace GymManagementSystem.Pages.Customer
         {
             if (!ModelState.IsValid)
             {
+                ViewData["MembershipId"] = new SelectList(_context.Membership, "Id", "MembershipType");
+                ViewData["ScheduleId"] = new SelectList(_context.Schedules, "Id", "Description");
                 return Page();
             }
 
