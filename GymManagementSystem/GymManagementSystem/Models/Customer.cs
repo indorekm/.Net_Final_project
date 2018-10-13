@@ -76,7 +76,7 @@ namespace GymManagementSystem.Models
         public float? Bmi
         {
             get { return GetBmi(); }
-        }
+        }       
 
         private int GetAge()
         {
@@ -96,7 +96,7 @@ namespace GymManagementSystem.Models
                 bmi = Weight.Value * 100 / (Height.Value * Height.Value);
             }
             return bmi;
-        }
+        }        
 
         // RELATIONSHIP
         [Display(Name = "Membership")]

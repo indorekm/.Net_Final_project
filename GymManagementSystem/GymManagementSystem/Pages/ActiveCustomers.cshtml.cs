@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using GymManagementSystem.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,15 +15,14 @@ namespace GymManagementSystem.Pages
             _context = context;
         }
 
-        public IList<Models.Customer> Customers { get; set; }
+        public IList<Models.Customer> ActiveCustomer { get; set; }
 
         public void OnGet()
         {
-            var allCustomers = _context.Customers.Include(c => c.Membership).Include(c => c.Schedule).OrderBy(c=> c.Name).ToList();
-            
-            // TODO: logic to find active customers
-
-            Customers = allCustomers;
+            ActiveCustomer = _context.Customers
+                 .Include(c => c.Membership)
+                 .Include(c => c.Schedule)
+                 .OrderBy(c => c.Name).ToList();
         }
     }
 }
